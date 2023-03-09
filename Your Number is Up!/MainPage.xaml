@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Your_Number_is_Up_.MainPage">
+
+    <StackLayout>
+        <Label Text="Choose the correct block that completes the equation"
+            VerticalOptions="Center"
+            HorizontalOptions="Center">
+        </Label>
+        <!--Score-->
+        <Label 
+                x:Name="Score"
+                Text=""
+                BackgroundColor="Green"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+                
+
+
+        </Label>
+        <!--Main result number label-->
+        <Label 
+                x:Name="MainResult"
+                Text="Main Result"
+                BackgroundColor="Green"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+            
+        </Label>
+        <!--Second operand for label-->
+        <Label   
+                x:Name="SecondOp"
+                Text="Second Operand"
+                BackgroundColor="Gray"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+
+        </Label>
+        <!--Addition-->
+        <Button 
+                x:Name="Addition"
+                Text=""
+                Clicked="AdditionButtonClicked"
+                BackgroundColor="Red"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+                
+
+        </Button>
+        <!--Subtraction-->
+        <Button 
+                x:Name="Subtraction"
+                Text=""
+                Clicked="SubtractionButtonClicked"
+                BackgroundColor="Blue"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+
+        </Button>
+        <!--Multiplication-->
+        <Button 
+                x:Name="Multiplication"
+                Text=""
+                BackgroundColor="Pink"
+                Clicked="MultiplicationButtonClicked"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+
+        </Button>
+        <!--Division-->
+        <Button
+                x:Name="Division"
+                Text=""
+                Clicked="DivisionButtonClicked"
+                BackgroundColor="Purple"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+
+        </Button>
+    </StackLayout>
+
+</ContentPage>
