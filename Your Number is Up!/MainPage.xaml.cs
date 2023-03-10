@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Your_Number_is_Up_
 {
@@ -24,24 +26,73 @@ namespace Your_Number_is_Up_
         int SecondOperand;
         int Result;
         int Operation;
+        
+        int _countSeconds = 10;
 
         //User score
         int score = 0;
-        
+        //initial score(keeping track to increment levels)
+        int initial_score = 0;
+        //User lives
+        int lives = 3;
+        //User level
+        int level = 1;
         public MainPage()
         {
             InitializeComponent();
 
             Initialize_values();
+
+            Timer(_countSeconds);
         }
 
+
+        public void Timer(int count)
+        {
+            count = _countSeconds;
+            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+            {
+                count--;
+                Time.Text = "Time: " + count.ToString();
+
+                if (_countSeconds == 0)
+                {
+                    lives--;
+                    
+                    Display_Lives();
+                    RestartTimer();
+                    return false;
+
+                }
+                else
+                {
+                    return true;
+                }
+
+                
+
+
+            });
+        }
+        public void RestartTimer()
+        {
+            Timer(_countSeconds);
+        }
         //Setting variables to appropraite values, only called when first stareted, or user enters correct response
         public void Initialize_values()
         {
+            //check to see if level should be incremented
+            if(score == initial_score + 3)
+            {
+                Increment_Level();
+            }
             EquationCreator();
             MainResult.Text = "Main Result: "+ Result.ToString();
             Score.Text = "Score: "+score.ToString();
-
+            Time.Text = "Time: " + _countSeconds.ToString();
+            
+            Display_Lives();
+            Level.Text = "Level: " + level.ToString();
             SecondOp.Text = "Second Operand: " + SecondOperand.ToString();
 
             Addition.Text = "Addition" +UserNumber.ToString();
@@ -53,48 +104,96 @@ namespace Your_Number_is_Up_
             Subtraction.Text = "Subtraction "+UserNumber.ToString();
         }
 
+        
+        public void Display_Lives()
+        {
+            Lives.Text = "Lives: " + lives.ToString();
+            if (lives == 0)
+            {
+                GameDone();
+            }
+            
+        }
+        
         //This function will determin which button was clicked, and from there determin if the user was correct or incorrect
         
         
-        private void AdditionButtonClicked(object sender, EventArgs e)
+        private void ButtonClicked(object sender, EventArgs e)
         {
             Button Button = sender as Button;
-            if (Result == UserNumber + SecondOperand)
+            if(Button.ClassId == "Addition")
             {
-                score += 1;
+                if(Result == UserNumber + SecondOperand)
+            {
+                    score += 1;
 
-                Initialize_values();
+                    Initialize_values();
+                }
+                else
+                {
+                    lives--;
+                    Display_Lives();
+                }
             }
-        }
-        private void SubtractionButtonClicked(object sender, EventArgs e)
-        {
-            Button Button = sender as Button;
-            if (Result == UserNumber - SecondOperand)
+            else if (Button.ClassId == "Subtraction")
             {
-                score += 1;
-                Initialize_values();
-            }
-        }
-        private void MultiplicationButtonClicked(object sender, EventArgs e)
-        {
-            Button Button = sender as Button;
-            if (Result == UserNumber * SecondOperand)
-            {
-                score += 1;
-                Initialize_values();
-            }
-        }
-        private void DivisionButtonClicked(object sender, EventArgs e)
-        {
-            Button Button = sender as Button;
-            if (Result == UserNumber / SecondOperand)
-            {
-                score += 1;
-                Initialize_values();
-            }
-        }
+                if (Result == UserNumber - SecondOperand)
+                {
+                    score += 1;
 
+                    Initialize_values();
+                }
+                else
+                {
+                    lives--;
+                    Display_Lives();
+                }
+            }
+            else if (Button.ClassId == "Multiplication")
+            {
+                if (Result == UserNumber * SecondOperand)
+                {
+                    score += 1;
 
+                    Initialize_values();
+                }
+                else
+                {
+                    lives--;
+                    Display_Lives();
+                }
+            }
+            else if (Button.ClassId == "Division")
+            {
+                if (Result == UserNumber / SecondOperand)
+                {
+                    score += 1;
+
+                    Initialize_values();
+                }
+                else
+                {
+                    lives--;
+                    Display_Lives();
+                }
+            }
+          
+
+            
+
+        }
+        
+        public void Increment_Level()
+        {
+            initial_score = score;
+            _countSeconds -= 2;
+            level++;
+
+        }
+        public void GameDone()
+        {
+            Navigation.PushAsync(new GameOver());
+        }
         //Create equations display values to mainpage 
         public void EquationCreator()
         {
@@ -133,11 +232,14 @@ namespace Your_Number_is_Up_
             }
 
             
+                
+            
             
             //need to implement geters and setters for all variables
             //Also need to ensure that if division, the result does not end up with any decimal points
 
 
         }
+        
     }
 }

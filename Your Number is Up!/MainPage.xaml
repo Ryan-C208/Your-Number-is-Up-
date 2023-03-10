@@ -19,6 +19,36 @@
 
 
         </Label>
+        <Label 
+                x:Name="Lives"
+                Text=""
+                BackgroundColor="Green"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+
+
+
+        </Label>
+        <Label 
+                x:Name="Time"
+                Text=""
+                BackgroundColor="Green"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+
+
+
+        </Label>
+        <Label 
+                x:Name="Level"
+                Text=""
+                BackgroundColor="Green"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+
+
+
+        </Label>
         <!--Main result number label-->
         <Label 
                 x:Name="MainResult"
@@ -40,8 +70,9 @@
         <!--Addition-->
         <Button 
                 x:Name="Addition"
+                ClassId="Addition"
                 Text=""
-                Clicked="AdditionButtonClicked"
+                Clicked="ButtonClicked"
                 BackgroundColor="Red"
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
@@ -51,8 +82,9 @@
         <!--Subtraction-->
         <Button 
                 x:Name="Subtraction"
+                ClassId="Subtraction"
                 Text=""
-                Clicked="SubtractionButtonClicked"
+                Clicked="ButtonClicked"
                 BackgroundColor="Blue"
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
@@ -61,9 +93,10 @@
         <!--Multiplication-->
         <Button 
                 x:Name="Multiplication"
+                ClassId="Multiplication"
                 Text=""
                 BackgroundColor="Pink"
-                Clicked="MultiplicationButtonClicked"
+                Clicked="ButtonClicked"
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
 
@@ -71,13 +104,15 @@
         <!--Division-->
         <Button
                 x:Name="Division"
+                ClassId="Division"
                 Text=""
-                Clicked="DivisionButtonClicked"
+                Clicked="ButtonClicked"
                 BackgroundColor="Purple"
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
 
         </Button>
     </StackLayout>
+    
 
 </ContentPage>

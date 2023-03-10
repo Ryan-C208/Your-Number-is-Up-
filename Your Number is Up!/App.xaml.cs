@@ -10,7 +10,10 @@ namespace Your_Number_is_Up_
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new Page1());
+            
+           
+            
         
 
         }
