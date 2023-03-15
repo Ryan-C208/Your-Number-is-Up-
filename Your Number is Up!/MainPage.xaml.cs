@@ -37,32 +37,43 @@ namespace Your_Number_is_Up_
         int lives = 3;
         //User level
         int level = 1;
+        //boolean varible that keeps track of wheter or not the timer needs to be restarted
+        bool RestartTimer = false;
+        //Controls total range of values that can be used for the main equation
+        int Maxrange = 11;
         public MainPage()
         {
             InitializeComponent();
 
+            Timer(_countSeconds);
             Initialize_values();
 
-            Timer(_countSeconds);
+            
         }
 
 
         public void Timer(int count)
         {
-            count = _countSeconds;
+            
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
                 count--;
                 Time.Text = "Time: " + count.ToString();
 
-                if (_countSeconds == 0)
-                {
-                    lives--;
-                    
-                    Display_Lives();
-                    RestartTimer();
-                    return false;
+            if (count == 0)
+            {
+                lives--;
 
+                Display_Lives();
+                Timer(_countSeconds);
+                return false;
+
+            }
+            else if (RestartTimer == true)
+                {
+                    RestartTimer = false;
+                    Timer(_countSeconds);
+                    return false;
                 }
                 else
                 {
@@ -74,18 +85,20 @@ namespace Your_Number_is_Up_
 
             });
         }
-        public void RestartTimer()
-        {
-            Timer(_countSeconds);
-        }
+        
         //Setting variables to appropraite values, only called when first stareted, or user enters correct response
         public void Initialize_values()
         {
+            
             //check to see if level should be incremented
             if(score == initial_score + 3)
             {
                 Increment_Level();
             }
+            //Restart Timer
+            RestartTimer = true;
+           
+            //create values that fill equation fields
             EquationCreator();
             MainResult.Text = "Main Result: "+ Result.ToString();
             Score.Text = "Score: "+score.ToString();
@@ -126,7 +139,6 @@ namespace Your_Number_is_Up_
                 if(Result == UserNumber + SecondOperand)
             {
                     score += 1;
-
                     Initialize_values();
                 }
                 else
@@ -154,7 +166,7 @@ namespace Your_Number_is_Up_
                 if (Result == UserNumber * SecondOperand)
                 {
                     score += 1;
-
+                    
                     Initialize_values();
                 }
                 else
@@ -168,7 +180,6 @@ namespace Your_Number_is_Up_
                 if (Result == UserNumber / SecondOperand)
                 {
                     score += 1;
-
                     Initialize_values();
                 }
                 else
@@ -188,6 +199,7 @@ namespace Your_Number_is_Up_
             initial_score = score;
             _countSeconds -= 2;
             level++;
+            Maxrange += 5;
 
         }
         public void GameDone()
@@ -198,9 +210,9 @@ namespace Your_Number_is_Up_
         public void EquationCreator()
         {
             //Generating random number that user will click for the equation
-            UserNumber = new Random().Next(1, 11);
+            UserNumber = new Random().Next(1, Maxrange);
             //Generating random number that will be used as the second operand in the equation 
-            SecondOperand = new Random().Next(1, 11);
+            SecondOperand = new Random().Next(1, Maxrange);
             //Randomly generating operation that will be used on the two numbers to get the result
             Operation = new Random().Next(0, 4);
 

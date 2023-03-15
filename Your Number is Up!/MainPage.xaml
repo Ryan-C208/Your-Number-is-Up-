@@ -3,18 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Your_Number_is_Up_.MainPage">
 
-    <StackLayout>
-        <Label Text="Choose the correct block that completes the equation"
+    <StackLayout Spacing="20">
+        <Label Text="Choose the correct block that completes the equation!"
             VerticalOptions="Center"
-            HorizontalOptions="Center">
+            FontSize="Large"
+            >
+            
         </Label>
+    
+   
+   
+
         <!--Score-->
         <Label 
                 x:Name="Score"
                 Text=""
                 BackgroundColor="Green"
                 VerticalOptions="Center"
-                HorizontalOptions="Center">
+                HorizontalOptions="Start"
+                FontSize="Medium">
                 
 
 
@@ -22,9 +29,10 @@
         <Label 
                 x:Name="Lives"
                 Text=""
-                BackgroundColor="Green"
+                BackgroundColor="LightYellow"
                 VerticalOptions="Center"
-                HorizontalOptions="Center">
+                HorizontalOptions="Start"
+                FontSize="Medium">
 
 
 
@@ -32,9 +40,10 @@
         <Label 
                 x:Name="Time"
                 Text=""
-                BackgroundColor="Green"
+                BackgroundColor="Teal"
                 VerticalOptions="Center"
-                HorizontalOptions="Center">
+                HorizontalOptions="Start"
+                FontSize="Medium">
 
 
 
@@ -42,18 +51,22 @@
         <Label 
                 x:Name="Level"
                 Text=""
-                BackgroundColor="Green"
+                BackgroundColor="DarkTurquoise"
                 VerticalOptions="Center"
-                HorizontalOptions="Center">
+                HorizontalOptions="Start"
+                FontSize="Medium">
 
-
+    
 
         </Label>
+    
         <!--Main result number label-->
         <Label 
                 x:Name="MainResult"
                 Text="Main Result"
-                BackgroundColor="Green"
+                FontSize="Large"
+                
+                BackgroundColor="DarkOliveGreen"
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
             
@@ -62,11 +75,14 @@
         <Label   
                 x:Name="SecondOp"
                 Text="Second Operand"
-                BackgroundColor="Gray"
+                FontSize="Large"
+                BackgroundColor="Orange"
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
 
         </Label>
+        <!--Space-->
+        
         <!--Addition-->
         <Button 
                 x:Name="Addition"
@@ -75,7 +91,8 @@
                 Clicked="ButtonClicked"
                 BackgroundColor="Red"
                 VerticalOptions="Center"
-                HorizontalOptions="Center">
+                HorizontalOptions="Start"
+                FontSize="Large">
                 
 
         </Button>
@@ -87,7 +104,8 @@
                 Clicked="ButtonClicked"
                 BackgroundColor="Blue"
                 VerticalOptions="Center"
-                HorizontalOptions="Center">
+                HorizontalOptions="Start"
+                FontSize="Large">
 
         </Button>
         <!--Multiplication-->
@@ -98,7 +116,8 @@
                 BackgroundColor="Pink"
                 Clicked="ButtonClicked"
                 VerticalOptions="Center"
-                HorizontalOptions="Center">
+                HorizontalOptions="Start"
+                FontSize="Large">
 
         </Button>
         <!--Division-->
@@ -109,7 +128,8 @@
                 Clicked="ButtonClicked"
                 BackgroundColor="Purple"
                 VerticalOptions="Center"
-                HorizontalOptions="Center">
+                HorizontalOptions="Start"
+                FontSize="Large">
 
         </Button>
     </StackLayout>
