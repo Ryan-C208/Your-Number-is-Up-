@@ -88,6 +88,7 @@
                 x:Name="Addition"
                 ClassId="Addition"
                 Text=""
+                
                 Clicked="ButtonClicked"
                 BackgroundColor="Red"
                 VerticalOptions="Center"
