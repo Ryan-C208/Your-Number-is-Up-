@@ -65,7 +65,8 @@
                 x:Name="MainResult"
                 Text="Main Result"
                 FontSize="Large"
-                
+                WidthRequest="40"
+                HeightRequest="40"
                 BackgroundColor="DarkOliveGreen"
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
@@ -75,6 +76,8 @@
         <Label   
                 x:Name="SecondOp"
                 Text="Second Operand"
+                WidthRequest="40"
+                HeightRequest="40"
                 FontSize="Large"
                 BackgroundColor="Orange"
                 VerticalOptions="Center"
@@ -82,8 +85,95 @@
 
         </Label>
         <!--Space-->
+        <Frame
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            WidthRequest="60"
+            HeightRequest="60"
+            BackgroundColor="White"
+            BorderColor="Green"
+            x:Name="DropArea">
+            <Frame.GestureRecognizers>
+                <DropGestureRecognizer AllowDrop="True"
+                 Drop="DropGestureRecognizer_Drop"
+                                       />
+            </Frame.GestureRecognizers>
+            
+        </Frame>
         
-        <!--Addition-->
+        
+        <Label
+            x:Name="Addition"
+            Text=""
+            ClassId="AdditionDrag"
+            BackgroundColor="Yellow"
+            WidthRequest="40"
+            HeightRequest="40"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            >
+            
+            <Label.GestureRecognizers>
+                <DragGestureRecognizer CanDrag="True"
+                 DragStarting="DragGestureRecognizer_DragStarting"/>
+            </Label.GestureRecognizers>
+            
+        </Label>
+
+        <Label
+            x:Name="Subtraction"
+            Text=""
+            ClassId="SubtractionDrag"
+            BackgroundColor="Brown"
+            WidthRequest="80"
+            HeightRequest="80"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            >
+
+            <Label.GestureRecognizers>
+                <DragGestureRecognizer CanDrag="True"
+                 DragStarting="DragGestureRecognizer_DragStarting"/>
+            </Label.GestureRecognizers>
+
+        </Label>
+        <Label
+            x:Name="Multiplication"
+            Text=""
+            ClassId="MultiplicationDrag"
+            BackgroundColor="Orange"
+            WidthRequest="80"
+            HeightRequest="80"
+            HorizontalOptions="Start"
+            VerticalOptions="Start">
+
+            <Label.GestureRecognizers>
+                <DragGestureRecognizer CanDrag="True"
+                 DragStarting="DragGestureRecognizer_DragStarting"/>
+            </Label.GestureRecognizers>
+
+        </Label>
+        <Label
+            x:Name="Division"
+            Text=""
+            ClassId="DivisionDrag"
+            BackgroundColor="Purple"
+            WidthRequest="80"
+            HeightRequest="80"
+            HorizontalOptions="Start"
+            VerticalOptions="Start">
+
+            <Label.GestureRecognizers>
+                <DragGestureRecognizer CanDrag="True"
+                
+                DragStarting="DragGestureRecognizer_DragStarting"/>
+            </Label.GestureRecognizers>
+
+        </Label>
+
+
+
+        <!--Addition
         <Button 
                 x:Name="Addition"
                 ClassId="Addition"
@@ -94,10 +184,10 @@
                 VerticalOptions="Center"
                 HorizontalOptions="Start"
                 FontSize="Large">
-                
+            
 
         </Button>
-        <!--Subtraction-->
+        
         <Button 
                 x:Name="Subtraction"
                 ClassId="Subtraction"
@@ -109,7 +199,7 @@
                 FontSize="Large">
 
         </Button>
-        <!--Multiplication-->
+        
         <Button 
                 x:Name="Multiplication"
                 ClassId="Multiplication"
@@ -121,7 +211,7 @@
                 FontSize="Large">
 
         </Button>
-        <!--Division-->
+        
         <Button
                 x:Name="Division"
                 ClassId="Division"
@@ -133,6 +223,7 @@
                 FontSize="Large">
 
         </Button>
+        -->
     </StackLayout>
     
 

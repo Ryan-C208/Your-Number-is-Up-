@@ -115,12 +115,15 @@ namespace Your_Number_is_Up_
             Division.Text = "Divison: "+UserNumber.ToString();
 
             Subtraction.Text = "Subtraction "+UserNumber.ToString();
+
+            DropArea.BorderColor = Color.White;
         }
 
         
         public void Display_Lives()
         {
             Lives.Text = "Lives: " + lives.ToString();
+            DropArea.BorderColor = Color.White;
             if (lives == 0)
             {
                 GameDone();
@@ -130,7 +133,7 @@ namespace Your_Number_is_Up_
         
         //This function will determin which button was clicked, and from there determin if the user was correct or incorrect
         
-        
+        /*
         private void ButtonClicked(object sender, EventArgs e)
         {
             Button Button = sender as Button;
@@ -193,6 +196,7 @@ namespace Your_Number_is_Up_
             
 
         }
+        */
         
         public void Increment_Level()
         {
@@ -252,6 +256,78 @@ namespace Your_Number_is_Up_
 
 
         }
-        
+        //When drag starts, save data that it contains 
+        private void DragGestureRecognizer_DragStarting(object sender, DragStartingEventArgs e)
+        {
+            var label = (sender as Element)?.Parent as Label;
+            e.Data.Properties.Add("ClassId", label.ClassId);
+        }
+        //When drag is dropped, check to see if right answer
+        private void DropGestureRecognizer_Drop(object sender, DropEventArgs e)
+        {
+            Boolean Correct = false;
+           
+            
+            String TypeOfOp  = (String) e.Data.Properties["ClassId"];
+            var frame = (sender as Element)?.Parent as Frame;
+            
+
+
+            if (TypeOfOp == "AdditionDrag")
+            {
+                if (Result == UserNumber + SecondOperand)
+                {
+                    Correct = true;
+                }
+            }
+
+
+
+            else if (TypeOfOp == "SubtractionDrag")
+            {
+                if (Result == UserNumber - SecondOperand)
+                {
+                    Correct = true;
+                }
+            }
+
+
+            else if (TypeOfOp == "MultiplicationDrag")
+            {
+                if (Result == UserNumber * SecondOperand)
+                {
+                    Correct = true;                
+                }
+
+            }
+
+
+            else if (TypeOfOp == "DivisionDrag")
+            {
+                if (Result == UserNumber / SecondOperand)
+                {
+                    Correct = true;
+                }
+            }
+
+
+            if(Correct == true)
+            {
+                frame.BorderColor = Color.Green;
+                score += 1;
+                Initialize_values();
+                
+            }
+           
+            else
+            {
+                frame.BorderColor = Color.Red;
+                lives--;
+                Display_Lives();
+                
+            }
+
+
+        }
     }
 }
