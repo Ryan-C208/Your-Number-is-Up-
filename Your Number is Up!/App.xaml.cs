@@ -1,6 +1,8 @@
 ﻿using System;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.GTKSpecific;
 using Xamarin.Forms.Xaml;
+using Your_Number_is_Up;
 
 namespace Your_Number_is_Up_
 {
@@ -10,12 +12,10 @@ namespace Your_Number_is_Up_
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Page1());
+            MainPage = new Xamarin.Forms.NavigationPage(new Page1());
+            
             
            
-            
-        
-
         }
 
         protected override void OnStart()

@@ -18,6 +18,19 @@
 
 
             </Button>
+            <Button
+                x:Name="Rules"
+                Text="Rules"
+                Clicked="Rules_Clicked"
+                BackgroundColor="Blue"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                
+                
+                >
+                
+                
+            </Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Your_Number_is_Up;
 
 namespace Your_Number_is_Up_
 {
@@ -20,5 +21,12 @@ public partial class Page1 : ContentPage
         {
             Navigation.PushAsync(new MainPage());
         }
+
+        
+        async void Rules_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Rules());
+        }
+       
     }
 }

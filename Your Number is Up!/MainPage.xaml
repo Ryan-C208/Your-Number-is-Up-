@@ -3,227 +3,255 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Your_Number_is_Up_.MainPage">
 
-    <StackLayout Spacing="20">
-        <Label Text="Choose the correct block that completes the equation!"
+
+    
+        
+    
+   
+
+    <StackLayout
+        BackgroundColor="Black">
+
+        <StackLayout
+            BackgroundColor="Green">
+            <Label Text="Choose the correct block that completes the equation!"
             VerticalOptions="Center"
             FontSize="Large"
             >
-            
-        </Label>
-    
-   
-   
 
-        <!--Score-->
-        <Label 
+            </Label>
+
+
+        </StackLayout>
+        
+       
+
+
+        <StackLayout
+            BackgroundColor="Red">
+            <Grid
+           ColumnDefinitions= "192, 192"
+           RowDefinitions="50, 50">
+
+                <!--Score-->
+                <Label 
+              Grid.Column="0"
+                
+                
                 x:Name="Score"
                 Text=""
-                BackgroundColor="Green"
-                VerticalOptions="Center"
+                BackgroundColor="HotPink"
+                VerticalOptions="Start"
                 HorizontalOptions="Start"
-                FontSize="Medium">
-                
+                FontSize="Medium" />
 
 
-        </Label>
-        <Label 
+                <Label 
                 x:Name="Lives"
+                
+                Grid.Row="1"
                 Text=""
-                BackgroundColor="LightYellow"
-                VerticalOptions="Center"
+                BackgroundColor="MediumPurple"
+                VerticalOptions="Start"
                 HorizontalOptions="Start"
-                FontSize="Medium">
+                FontSize="Medium" />
 
 
 
-        </Label>
-        <Label 
+
+                <Label 
                 x:Name="Time"
                 Text=""
+                Grid.Row="0"
+                Grid.Column="1"
                 BackgroundColor="Teal"
-                VerticalOptions="Center"
-                HorizontalOptions="Start"
-                FontSize="Medium">
+                VerticalOptions="Start"
+                HorizontalOptions="End"
+                FontSize="Medium" />
 
 
 
-        </Label>
-        <Label 
+                <Label 
                 x:Name="Level"
+                Grid.Column="1"
+                Grid.Row="1"
                 Text=""
                 BackgroundColor="DarkTurquoise"
-                VerticalOptions="Center"
-                HorizontalOptions="Start"
-                FontSize="Medium">
+                VerticalOptions="Start"
+                HorizontalOptions="End"
+                FontSize="Medium" />
 
-    
 
-        </Label>
-    
-        <!--Main result number label-->
-        <Label 
+
+
+
+
+            </Grid>
+
+
+        </StackLayout>
+
+        <StackLayout
+            BackgroundColor="Blue">
+            <!--Main result number label-->
+            <Label 
                 x:Name="MainResult"
                 Text="Main Result"
                 FontSize="Large"
-                WidthRequest="40"
-                HeightRequest="40"
-                BackgroundColor="DarkOliveGreen"
-                VerticalOptions="Center"
-                HorizontalOptions="Center">
-            
-        </Label>
-        <!--Second operand for label-->
-        <Label   
-                x:Name="SecondOp"
-                Text="Second Operand"
-                WidthRequest="40"
-                HeightRequest="40"
-                FontSize="Large"
-                BackgroundColor="Orange"
+                WidthRequest="90"
+                HeightRequest="75"
+                BackgroundColor="DeepPink"
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
 
-        </Label>
-        <!--Space-->
-        <Frame
+            </Label>
+            <!--Second operand for label-->
+            <Label   
+                x:Name="SecondOp"
+                Text="Second Operand"
+                WidthRequest="90"
+                HeightRequest="70"
+                FontSize="Large"
+                BackgroundColor="DarkCyan"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+
+            </Label>
+            <!--Space-->
+            <Frame
             HorizontalOptions="Center"
             VerticalOptions="Center"
-            WidthRequest="60"
-            HeightRequest="60"
-            BackgroundColor="White"
-            BorderColor="Green"
-            x:Name="DropArea">
-            <Frame.GestureRecognizers>
-                <DropGestureRecognizer AllowDrop="True"
-                 Drop="DropGestureRecognizer_Drop"
-                                       />
-            </Frame.GestureRecognizers>
+            WidthRequest="50"
+            HeightRequest="100"
+            BackgroundColor="Black"
             
-        </Frame>
+            x:Name="DropArea">
+                <Frame.GestureRecognizers>
+                    <DropGestureRecognizer AllowDrop="True"
+                 Drop="DropGestureRecognizer_Drop"
+                 
+                                       />
+                </Frame.GestureRecognizers>
+
+            </Frame>
+
+
+
+        </StackLayout>
+
+           
         
         
-        <Label
+        
+        <StackLayout
+            BackgroundColor="OrangeRed">
+
+            <Grid
+                ColumnDefinitions= "300, 300"
+                RowDefinitions="170, 170">
+                
+            
+            
+            
+            
+            <Label
+            Grid.Column="0"
             x:Name="Addition"
+                FontSize="50"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                FontAttributes="Bold,Italic"
+                
             Text=""
             ClassId="AdditionDrag"
             BackgroundColor="Yellow"
-            WidthRequest="40"
-            HeightRequest="40"
+            WidthRequest="90"
+            HeightRequest="100"
             HorizontalOptions="Start"
             VerticalOptions="Start"
             >
-            
-            <Label.GestureRecognizers>
-                <DragGestureRecognizer CanDrag="True"
-                 DragStarting="DragGestureRecognizer_DragStarting"/>
-            </Label.GestureRecognizers>
-            
-        </Label>
 
-        <Label
+                <Label.GestureRecognizers>
+                    <DragGestureRecognizer CanDrag="True"
+                 DragStarting="DragGestureRecognizer_DragStarting"/>
+                </Label.GestureRecognizers>
+
+            </Label>
+
+            <Label
+            Grid.Row="1"
             x:Name="Subtraction"
+            FontSize="50"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                FontAttributes="Bold,Italic"
             Text=""
             ClassId="SubtractionDrag"
             BackgroundColor="Brown"
-            WidthRequest="80"
-            HeightRequest="80"
+            WidthRequest="90"
+            HeightRequest="100"
             HorizontalOptions="Start"
             VerticalOptions="Start"
             >
 
-            <Label.GestureRecognizers>
-                <DragGestureRecognizer CanDrag="True"
+                <Label.GestureRecognizers>
+                    <DragGestureRecognizer CanDrag="True"
                  DragStarting="DragGestureRecognizer_DragStarting"/>
-            </Label.GestureRecognizers>
+                </Label.GestureRecognizers>
 
-        </Label>
-        <Label
-            x:Name="Multiplication"
+            </Label>
+            <Label
+            Grid.Column="1"
+            Grid.Row="0"
+            FontSize="50"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                FontAttributes="Bold,Italic"
+                x:Name="Multiplication"
             Text=""
             ClassId="MultiplicationDrag"
             BackgroundColor="Orange"
-            WidthRequest="80"
-            HeightRequest="80"
+            WidthRequest="90"
+            HeightRequest="100"
             HorizontalOptions="Start"
             VerticalOptions="Start">
 
-            <Label.GestureRecognizers>
-                <DragGestureRecognizer CanDrag="True"
+                <Label.GestureRecognizers>
+                    <DragGestureRecognizer CanDrag="True"
                  DragStarting="DragGestureRecognizer_DragStarting"/>
-            </Label.GestureRecognizers>
+                </Label.GestureRecognizers>
 
-        </Label>
-        <Label
-            x:Name="Division"
+            </Label>
+            <Label
+            Grid.Column="1"
+                FontSize="50"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                FontAttributes="Bold,Italic"
+                Grid.Row="1"
+                x:Name="Division"
             Text=""
             ClassId="DivisionDrag"
             BackgroundColor="Purple"
-            WidthRequest="80"
-            HeightRequest="80"
+            WidthRequest="90"
+            HeightRequest="100"
             HorizontalOptions="Start"
             VerticalOptions="Start">
 
-            <Label.GestureRecognizers>
-                <DragGestureRecognizer CanDrag="True"
+                <Label.GestureRecognizers>
+                    <DragGestureRecognizer CanDrag="True"
                 
                 DragStarting="DragGestureRecognizer_DragStarting"/>
-            </Label.GestureRecognizers>
+                </Label.GestureRecognizers>
 
-        </Label>
+            </Label>
+
+            </Grid>
 
 
+        </StackLayout>
+    
 
-        <!--Addition
-        <Button 
-                x:Name="Addition"
-                ClassId="Addition"
-                Text=""
-                
-                Clicked="ButtonClicked"
-                BackgroundColor="Red"
-                VerticalOptions="Center"
-                HorizontalOptions="Start"
-                FontSize="Large">
-            
-
-        </Button>
-        
-        <Button 
-                x:Name="Subtraction"
-                ClassId="Subtraction"
-                Text=""
-                Clicked="ButtonClicked"
-                BackgroundColor="Blue"
-                VerticalOptions="Center"
-                HorizontalOptions="Start"
-                FontSize="Large">
-
-        </Button>
-        
-        <Button 
-                x:Name="Multiplication"
-                ClassId="Multiplication"
-                Text=""
-                BackgroundColor="Pink"
-                Clicked="ButtonClicked"
-                VerticalOptions="Center"
-                HorizontalOptions="Start"
-                FontSize="Large">
-
-        </Button>
-        
-        <Button
-                x:Name="Division"
-                ClassId="Division"
-                Text=""
-                Clicked="ButtonClicked"
-                BackgroundColor="Purple"
-                VerticalOptions="Center"
-                HorizontalOptions="Start"
-                FontSize="Large">
-
-        </Button>
-        -->
     </StackLayout>
     
 

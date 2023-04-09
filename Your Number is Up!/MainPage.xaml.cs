@@ -100,30 +100,30 @@ namespace Your_Number_is_Up_
            
             //create values that fill equation fields
             EquationCreator();
-            MainResult.Text = "Main Result: "+ Result.ToString();
+            MainResult.Text = Result.ToString();
             Score.Text = "Score: "+score.ToString();
             Time.Text = "Time: " + _countSeconds.ToString();
             
             Display_Lives();
             Level.Text = "Level: " + level.ToString();
-            SecondOp.Text = "Second Operand: " + SecondOperand.ToString();
+            SecondOp.Text = SecondOperand.ToString();
 
-            Addition.Text = "Addition" +UserNumber.ToString();
+            Addition.Text = UserNumber.ToString();
 
-            Multiplication.Text = "Multiplication: "+UserNumber.ToString();
+            Multiplication.Text = UserNumber.ToString();
 
-            Division.Text = "Divison: "+UserNumber.ToString();
+            Division.Text = UserNumber.ToString();
 
-            Subtraction.Text = "Subtraction "+UserNumber.ToString();
+            Subtraction.Text = UserNumber.ToString();
 
-            DropArea.BorderColor = Color.White;
+            
         }
 
         
         public void Display_Lives()
         {
             Lives.Text = "Lives: " + lives.ToString();
-            DropArea.BorderColor = Color.White;
+            
             if (lives == 0)
             {
                 GameDone();
@@ -133,70 +133,7 @@ namespace Your_Number_is_Up_
         
         //This function will determin which button was clicked, and from there determin if the user was correct or incorrect
         
-        /*
-        private void ButtonClicked(object sender, EventArgs e)
-        {
-            Button Button = sender as Button;
-            if(Button.ClassId == "Addition")
-            {
-                if(Result == UserNumber + SecondOperand)
-            {
-                    score += 1;
-                    Initialize_values();
-                }
-                else
-                {
-                    lives--;
-                    Display_Lives();
-                }
-            }
-            else if (Button.ClassId == "Subtraction")
-            {
-                if (Result == UserNumber - SecondOperand)
-                {
-                    score += 1;
-
-                    Initialize_values();
-                }
-                else
-                {
-                    lives--;
-                    Display_Lives();
-                }
-            }
-            else if (Button.ClassId == "Multiplication")
-            {
-                if (Result == UserNumber * SecondOperand)
-                {
-                    score += 1;
-                    
-                    Initialize_values();
-                }
-                else
-                {
-                    lives--;
-                    Display_Lives();
-                }
-            }
-            else if (Button.ClassId == "Division")
-            {
-                if (Result == UserNumber / SecondOperand)
-                {
-                    score += 1;
-                    Initialize_values();
-                }
-                else
-                {
-                    lives--;
-                    Display_Lives();
-                }
-            }
-          
-
-            
-
-        }
-        */
+        
         
         public void Increment_Level()
         {
@@ -313,7 +250,13 @@ namespace Your_Number_is_Up_
 
             if(Correct == true)
             {
-                frame.BorderColor = Color.Green;
+                //maybe try to play a sound if correct
+                frame.BackgroundColor = Color.Green;
+                Device.StartTimer(new TimeSpan(0, 0, 1), () => {
+                    frame.BackgroundColor = Color.Black;
+                    return false;
+                });
+                
                 score += 1;
                 Initialize_values();
                 
@@ -321,7 +264,13 @@ namespace Your_Number_is_Up_
            
             else
             {
-                frame.BorderColor = Color.Red;
+                //maybe play a sound if wrong 
+                frame.BackgroundColor = Color.Red;
+                Device.StartTimer(new TimeSpan(0, 0, 1), () => {
+                    frame.BackgroundColor = Color.Black;
+                    return false;
+                });
+                
                 lives--;
                 Display_Lives();
                 
