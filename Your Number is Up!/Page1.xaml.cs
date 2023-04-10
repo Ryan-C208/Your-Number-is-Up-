@@ -19,13 +19,13 @@ public partial class Page1 : ContentPage
     }
         async void NavigateTo(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MainPage());
+           await Navigation.PushAsync(new MainPage());
         }
 
         
         async void Rules_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new Rules());
+            await Navigation.PushAsync(new Rules());
         }
        
     }

@@ -57,8 +57,14 @@ namespace Your_Number_is_Up_
             
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
-                count--;
-                Time.Text = "Time: " + count.ToString();
+                
+                
+                if(RestartTimer == false)
+                {
+                    Time.Text = "Time: " + count.ToString();
+                    count--;
+                }
+                
 
             if (count == 0)
             {
@@ -72,8 +78,9 @@ namespace Your_Number_is_Up_
             else if (RestartTimer == true)
                 {
                     RestartTimer = false;
-                    Timer(_countSeconds);
+                    
                     return false;
+                    
                 }
                 else
                 {
@@ -96,8 +103,9 @@ namespace Your_Number_is_Up_
                 Increment_Level();
             }
             //Restart Timer
+            
             RestartTimer = true;
-           
+            Timer(_countSeconds);
             //create values that fill equation fields
             EquationCreator();
             MainResult.Text = Result.ToString();
@@ -134,9 +142,18 @@ namespace Your_Number_is_Up_
         //This function will determin which button was clicked, and from there determin if the user was correct or incorrect
         
         
-        
+        //This function increments the level, decreasing the time, and increasing the range of numbers used in the equations
         public void Increment_Level()
         {
+            if(level > 4)
+            {
+                //make other numbers random numbers within range of correct number except for correct block
+                //if you think its worth it, also make the block operations move positions at another level milestone
+                //also at higher levels dont divide number by itself, ensure that if it picks divison, it picks harder divison with a wider range of numbers
+                
+                level++;
+            }
+
             initial_score = score;
             _countSeconds -= 2;
             level++;

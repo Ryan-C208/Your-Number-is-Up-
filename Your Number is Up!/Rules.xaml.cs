@@ -20,7 +20,7 @@ public partial class Rules : ContentPage
         
         async void GoBack(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new Page1());
+            await Navigation.PushAsync(new Page1());
         }
         
     }

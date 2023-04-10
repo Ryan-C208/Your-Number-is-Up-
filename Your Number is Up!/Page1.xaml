@@ -1,16 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Your_Number_is_Up_.Page1">
+             x:Class="Your_Number_is_Up_.Page1"
+             NavigationPage.HasBackButton="False"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Your Number is Up!!"
+        <StackLayout
+            BackgroundColor="DarkGreen">
+            <Label Text="Welcome to Your Number is Up!"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" >
+                HorizontalOptions="CenterAndExpand"
+                   FontSize="25"
+                   FontAttributes="Bold">
             </Label>
             <Button 
                 x:Name="Button1"
                 Text="Start"
+                HeightRequest="100"
+                WidthRequest="100"
                 Clicked="NavigateTo"
                 BackgroundColor="Red"
                 VerticalOptions="Center"
@@ -21,6 +28,8 @@
             <Button
                 x:Name="Rules"
                 Text="Rules"
+                HeightRequest="100"
+                WidthRequest="100"
                 Clicked="Rules_Clicked"
                 BackgroundColor="Blue"
                 VerticalOptions="Center"

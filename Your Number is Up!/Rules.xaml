@@ -1,12 +1,132 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Your_Number_is_Up.Rules">
+             x:Class="Your_Number_is_Up.Rules"
+             NavigationPage.HasBackButton="False"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Rules"
+        <StackLayout
+            BackgroundColor="Gold">
+
+            <Label
+                Text="Rules"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                FontAttributes="Bold"
+                FontSize="40"
+                
+                >
+                
+
+
+            </Label>
+
+
+            <Label Text="There are four blocks at the bottom of the screen that each contain a number. Each block is a different color, and represents a different mathmatical operation. Yellow is additon. Brown is subtraction. Orange is multiplication. Purple is division. Drag the correct block into the black block located above the four blocks to get a point. A correct answer is one where the number contained within your block, combined with the number within the cyan colored block above the black block, with the proper mathmatical operation that your block represents, equals the pink block above the cyan colored block. "
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand" 
+                   FontSize="20"/>
+
+
+
+
+            <Grid
+                ColumnDefinitions= "230, 230"
+                RowDefinitions="120, 120">
+
+
+
+
+
+                <Label
+            Grid.Column="0"
+            
+                FontSize="25"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                FontAttributes="Bold,Italic"
+                
+            Text="Addition"
+            ClassId="Addition"
+            BackgroundColor="Yellow"
+            WidthRequest="150"
+            HeightRequest="100"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            >
+
+                    
+
+                </Label>
+
+                <Label
+            Grid.Row="1"
+            
+            FontSize="25"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                FontAttributes="Bold,Italic"
+            Text="Subtraction"
+            ClassId="Subtraction"
+            BackgroundColor="Brown"
+            WidthRequest="150"
+            HeightRequest="100"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            >
+
+                    
+
+                </Label>
+                <Label
+            Grid.Column="1"
+            Grid.Row="0"
+            FontSize="25"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                FontAttributes="Bold,Italic"
+                
+            Text="Multiplication"
+            ClassId="Multiplication"
+            BackgroundColor="Orange"
+            WidthRequest="150"
+            HeightRequest="100"
+            HorizontalOptions="Start"
+            VerticalOptions="Start">
+
+                    
+
+                </Label>
+                <Label
+            Grid.Column="1"
+                FontSize="25"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                FontAttributes="Bold,Italic"
+                Grid.Row="1"
+                
+            Text="Division"
+            ClassId="Division"
+            BackgroundColor="Purple"
+            WidthRequest="150"
+            HeightRequest="100"
+            HorizontalOptions="Start"
+            VerticalOptions="Start">
+
+                    
+
+                </Label>
+
+            </Grid>
+
+
+
+
+
+
+
+
+
 
 
             <Button

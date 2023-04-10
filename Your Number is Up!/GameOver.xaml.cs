@@ -18,7 +18,7 @@ namespace Your_Number_is_Up_
 		}
         async void Redo(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MainPage());
+            await Navigation.PushAsync(new MainPage());
         }
     }
 }
