@@ -14,25 +14,38 @@ namespace Your_Number_is_Up_.Droid
     [Activity(Label = "Your_Number_is_Up_", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
-       // MediaPlayer player;
+        //MediaPlayer player;
         protected override void OnCreate(Bundle savedInstanceState)
         {
 
             base.OnCreate(savedInstanceState);
 
+
+
+            //need to get music to work later!!!!!!!!!!
+            /*
+            PlaybackParams playbackParams = new PlaybackParams();
+
+            playbackParams.SetSpeed(0.8f);
+           
             
-          
-                        
+            //need to get music to work later
+            player = MediaPlayer.Create(this, Resource.Raw.SongForApp);
+
+            player.PlaybackParams = playbackParams;
+
+            player.Start();
+            */
+
+
+
 
 
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
-            //need to get music to work later
-            //player = MediaPlayer.Create(this, Resource.Raw.SongForApp);
             
-            //player.Start();
 
 
         }

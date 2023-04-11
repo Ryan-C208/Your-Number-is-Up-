@@ -25,6 +25,12 @@ namespace Your_Number_is_Up_
         const int SUBTRACTION = 1;
         const int MULTIPLICATION = 2;
         const int DIVISION = 3;
+
+        //symbolic constants used for moving blocks around at later levels
+        const int pattern1 = 0;
+        const int pattern2 = 1;
+        const int pattern3 = 2;
+        const int pattern4 = 3;
         //Numbers used in the equation
         int UserNumber;
         int SecondOperand;
@@ -46,6 +52,7 @@ namespace Your_Number_is_Up_
         //Controls total range of values that can be used for the main equation
         int Maxrange = 11;
         int Minrange = 1;
+        //constructor
         public MainPage()
         {
             InitializeComponent();
@@ -53,11 +60,9 @@ namespace Your_Number_is_Up_
             Timer(_countSeconds);
             Initialize_values();
 
-            
-
         }
 
-
+        //Will keep track of time, and has the ability to reset when necessary
         public void Timer(int count)
         {
             
@@ -101,6 +106,7 @@ namespace Your_Number_is_Up_
         }
         
         //Setting variables to appropraite values, only called when first stareted, or user enters correct response
+        //will also change things depending on what level the user has reached
         public void Initialize_values()
         {
             
@@ -126,8 +132,6 @@ namespace Your_Number_is_Up_
             if(level <= 4)
             {
 
-
-                
                 Addition.Text = UserNumber.ToString();
 
                 Multiplication.Text = UserNumber.ToString();
@@ -141,7 +145,7 @@ namespace Your_Number_is_Up_
             //if the level is greator than 4, the numbers within the blocks will now not all be the same, each will be an individual number.
             else
             {
-                //MoveBlocks();
+                
                 int offset1 = new Random().Next(-5, 5);
 
                 int offset2 = new Random().Next(-5, 5);
@@ -191,12 +195,17 @@ namespace Your_Number_is_Up_
 
 
             }
+            //Once the user gets to level 7, the blocks will start to move positions
+            if(level > 6)
+            {
+                MoveBlocks();
+            }
             
 
             
         }
 
-        
+        //Displays lives to the screen
         public void Display_Lives()
         {
             Lives.Text = "Lives: " + lives.ToString();
@@ -208,7 +217,7 @@ namespace Your_Number_is_Up_
             
         }
         
-        //This function will determin which button was clicked, and from there determin if the user was correct or incorrect
+        
         
         
         //This function increments the level, decreasing the time, and increasing the range of numbers used in the equations
@@ -236,21 +245,91 @@ namespace Your_Number_is_Up_
             
 
         }
+        //If the game is over, this function will be called and display the game over screen
         public void GameDone()
         {
             Navigation.PushAsync(new GameOver());
         }
 
-        //need to still implement this to move blocks to unique new positions
-        /*
+        //moves blocks to unique new positions
+        
         public void MoveBlocks()
         {
-            MainGrid.Children.Remove(Addition);
-            MainGrid.Children.Add(Addition, 1, 1);
+            int pattern_choice = new Random().Next(0, 4);
+
+            MainGrid.Children.Clear();
+            
+
+            //original pattern
+            if (pattern_choice == pattern1)
+            {
+                
+                //move addition
+                
+                MainGrid.Children.Add(Addition, 0, 0);
+                //move subtraction
+                
+                MainGrid.Children.Add(Subtraction, 0, 1);
+                //move multiplication
+                
+                MainGrid.Children.Add(Multiplication, 1, 0);
+                //move division
+                
+                MainGrid.Children.Add(Division, 1, 1);
+            }
+            //pattern 2
+            else if (pattern_choice == pattern2)
+            {
+                //move addition
+                
+                MainGrid.Children.Add(Addition, 1, 1);
+                //move subtraction
+                
+                MainGrid.Children.Add(Subtraction, 1, 0);
+                //move multiplication
+                
+                MainGrid.Children.Add(Multiplication, 0, 1);
+                //move division
+                
+                MainGrid.Children.Add(Division, 0, 0);
+            }
+            //pattern 3
+            else if (pattern_choice == pattern3)
+            {
+                //move addition
+                MainGrid.Children.Add(Addition, 0, 1);
+                //move subtraction
+                
+                MainGrid.Children.Add(Subtraction, 0, 0);
+                //move multiplication
+                
+                MainGrid.Children.Add(Multiplication, 1, 1);
+                //move division
+                
+                MainGrid.Children.Add(Division, 1, 0);
+            }
+            //pattern 4
+            else if (pattern_choice == pattern4)
+            {
+                //move addition
+                
+                MainGrid.Children.Add(Addition, 1, 1);
+                //move subtraction
+                
+                MainGrid.Children.Add(Subtraction, 0, 1);
+                //move multiplication
+                
+                MainGrid.Children.Add(Multiplication, 1, 0);
+                //move division
+                
+                MainGrid.Children.Add(Division, 0, 0);
+            }
+            
+
         }
         
 
-        */
+        
 
 
 
@@ -315,8 +394,7 @@ namespace Your_Number_is_Up_
                 
             
             
-            //need to implement geters and setters for all variables
-            //Also need to ensure that if division, the result does not end up with any decimal points
+            
 
 
         }
@@ -377,7 +455,7 @@ namespace Your_Number_is_Up_
 
             if(Correct == true)
             {
-                //maybe try to play a sound if correct
+                //If correct, reinitialize values and make black block green
                 frame.BackgroundColor = Color.Green;
                 Device.StartTimer(new TimeSpan(0, 0, 1), () => {
                     frame.BackgroundColor = Color.Black;
@@ -391,7 +469,7 @@ namespace Your_Number_is_Up_
            
             else
             {
-                //maybe play a sound if wrong 
+                //if wrong, decrement lives, make black box red
                 frame.BackgroundColor = Color.Red;
                 Device.StartTimer(new TimeSpan(0, 0, 1), () => {
                     frame.BackgroundColor = Color.Black;
