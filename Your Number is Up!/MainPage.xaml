@@ -150,7 +150,8 @@
 
             <Grid
                 ColumnDefinitions= "300, 300"
-                RowDefinitions="190, 190">
+                RowDefinitions="190, 190"
+                x:Name="MainGrid">
                 
             
             
